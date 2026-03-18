@@ -12,6 +12,11 @@ export default defineConfig({
       title: 'temporal-react-datepicker',
       social: [
           {
+              icon: 'github',
+              label: 'GitHub',
+              href: 'https://github.com/PabloViniegra/temporal-react-datepicker-docs',
+          },
+          {
               icon: 'external',
               label: 'npm',
               href: 'https://www.npmjs.com/package/temporal-react-datepicker',
@@ -57,6 +62,12 @@ export default defineConfig({
           {
               label: 'Reference',
               autogenerate: { directory: 'reference' },
+          },
+          {
+              label: 'Playground',
+              items: [
+                  { label: 'Interactive Playground', slug: 'playground' },
+              ],
           },
       ],
       }), react()],

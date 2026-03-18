@@ -71,11 +71,23 @@ const description = 'A high-performance, accessible React date picker built on t
       }
 
       .nav-brand {
-        color: #fafafa;
-        font-size: 0.875rem;
-        font-weight: 700;
-        letter-spacing: -0.3px;
+        color: #71717a;
+        font-size: 0.8125rem;
+        font-weight: 400;
+        font-family: 'JetBrains Mono', monospace;
+        letter-spacing: 0;
         text-decoration: none;
+        transition: color 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+        animation: brandSlideIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+
+      .nav-brand:hover {
+        color: #d4d4d8;
+      }
+
+      @keyframes brandSlideIn {
+        from { opacity: 0; transform: translateX(-10px); }
+        to   { opacity: 1; transform: translateX(0); }
       }
 
       .nav-links {
@@ -99,7 +111,10 @@ const description = 'A high-performance, accessible React date picker built on t
         transform: translateY(-1px);
       }
 
-      .nav-npm {
+      .nav-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
         border: 1px solid #27272a !important;
         border-radius: 5px;
         padding: 0.25rem 0.75rem !important;
@@ -108,10 +123,19 @@ const description = 'A high-performance, accessible React date picker built on t
         font-family: 'JetBrains Mono', monospace;
       }
 
+      .nav-pill:hover {
+        border-color: #3f3f46 !important;
+      }
+
+      .nav-pill svg {
+        flex-shrink: 0;
+        fill: currentColor;
+      }
+
       /* ── HERO ── */
       .hero {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         gap: 4rem;
         max-width: 960px;
         margin: 0 auto;
@@ -137,7 +161,7 @@ const description = 'A high-performance, accessible React date picker built on t
       .hero-badge-dot {
         width: 6px;
         height: 6px;
-        background: #27272a;
+        background: #52525b;
         border-radius: 50%;
         flex-shrink: 0;
       }
@@ -152,25 +176,27 @@ const description = 'A high-performance, accessible React date picker built on t
         color: #fafafa;
         font-size: clamp(2rem, 5vw, 3rem);
         font-weight: 800;
-        letter-spacing: -2px;
+        letter-spacing: -0.04em;
         line-height: 1.05;
         margin-bottom: 1.25rem;
+        text-wrap: balance;
       }
 
       .hero-tagline {
         color: #7c7c84;
         font-size: 0.9375rem;
-        line-height: 1.75;
+        line-height: 1.7;
         margin-bottom: 2rem;
         max-width: 380px;
+        text-wrap: pretty;
       }
 
       .hero-tagline code {
-        color: #7c7c84;
+        color: #a1a1aa;
         font-family: 'JetBrains Mono', monospace;
         font-size: 0.8125em;
         background: #111111;
-        border: 1px solid #1e1e1e;
+        border: 1px solid #27272a;
         padding: 0.1em 0.4em;
         border-radius: 4px;
       }
@@ -212,6 +238,15 @@ const description = 'A high-performance, accessible React date picker built on t
       .hero-right {
         flex-shrink: 0;
         width: 300px;
+      }
+
+      .hero-right-label {
+        font-size: 0.625rem;
+        font-weight: 500;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: #3f3f46;
+        margin-bottom: 0.75rem;
       }
 
       .calendar-preview {
@@ -432,10 +467,19 @@ const description = 'A high-performance, accessible React date picker built on t
         <li><a href="/reference/props/">Reference</a></li>
         <li>
           <a
+            href="https://github.com/PabloViniegra/temporal-react-datepicker-docs"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="nav-pill"
+            aria-label="GitHub repository (opens in new tab)"
+          ><svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>GitHub<span aria-hidden="true"> ↗</span></a>
+        </li>
+        <li>
+          <a
             href="https://www.npmjs.com/package/temporal-react-datepicker"
             target="_blank"
             rel="noopener noreferrer"
-            class="nav-npm"
+            class="nav-pill"
             aria-label="npm package (opens in new tab)"
           >npm<span aria-hidden="true"> ↗</span></a>
         </li>
@@ -466,6 +510,7 @@ const description = 'A high-performance, accessible React date picker built on t
 
       <!-- Interactive datepicker showcase -->
       <div class="hero-right">
+        <p class="hero-right-label" aria-hidden="true">Live preview</p>
         <DatePickerShowcase client:load />
       </div>
     </section>
