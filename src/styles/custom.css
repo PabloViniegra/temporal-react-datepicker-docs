@@ -1,0 +1,672 @@
+/* =============================================================================
+   temporal-react-datepicker docs — Custom Theme
+   Minimal / Dark — Inter + JetBrains Mono — White accent
+   ============================================================================= */
+
+/* -----------------------------------------------------------------------------
+   1. COLOR TOKENS
+   Target all theme selectors to override Starlight's [data-theme] specificity.
+   ----------------------------------------------------------------------------- */
+
+:root,
+[data-theme='dark'] {
+  --sl-color-bg: #09090b;
+  --sl-color-bg-nav: #09090b;
+  --sl-color-bg-sidebar: #09090b;
+  --sl-color-accent: #ffffff;
+  --sl-color-accent-high: #ffffff;
+  --sl-color-accent-low: #18181b;
+  --sl-color-text: #e4e4e7;
+  --sl-color-text-accent: #ffffff;
+  --sl-color-gray-1: #fafafa;
+  --sl-color-gray-2: #e4e4e7;
+  --sl-color-gray-3: #a1a1aa;
+  --sl-color-gray-4: #71717a;
+  --sl-color-gray-5: #3f3f46;
+  --sl-color-gray-6: #27272a;
+  --sl-color-gray-7: #18181b;
+  --sl-color-black: #09090b;
+  --sl-color-white: #fafafa;
+  --sl-color-hairline: #1a1a1a;
+  --sl-color-hairline-light: #111111;
+  --sl-color-hairline-shade: #111111;
+  --sl-color-bg-inline-code: #111111;
+  --sl-color-bg-badge: #18181b;
+}
+
+[data-theme='light'] {
+  --sl-color-bg: #ffffff;
+  --sl-color-bg-nav: #ffffff;
+  --sl-color-bg-sidebar: #fafafa;
+  --sl-color-accent: #09090b;
+  --sl-color-accent-high: #09090b;
+  --sl-color-accent-low: #e4e4e7;
+  --sl-color-text: #18181b;
+  --sl-color-text-accent: #09090b;
+  --sl-color-gray-1: #18181b;
+  --sl-color-gray-2: #27272a;
+  --sl-color-gray-3: #3f3f46;
+  --sl-color-gray-4: #71717a;
+  --sl-color-gray-5: #a1a1aa;
+  --sl-color-gray-6: #d4d4d8;
+  --sl-color-gray-7: #e4e4e7;
+  --sl-color-black: #ffffff;
+  --sl-color-white: #09090b;
+  --sl-color-hairline: #e4e4e7;
+  --sl-color-hairline-light: #f4f4f5;
+  --sl-color-hairline-shade: #f4f4f5;
+  --sl-color-bg-inline-code: #f4f4f5;
+  --sl-color-bg-badge: #e4e4e7;
+}
+
+/* -----------------------------------------------------------------------------
+   2. TYPOGRAPHY TOKENS
+   ----------------------------------------------------------------------------- */
+
+:root {
+  --sl-font: 'Inter', system-ui, -apple-system, sans-serif;
+  --sl-font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --sl-text-xs: 0.75rem;
+  --sl-text-sm: 0.8125rem;
+  --sl-text-base: 0.9375rem;
+}
+
+/* -----------------------------------------------------------------------------
+   3. HEADER
+   ----------------------------------------------------------------------------- */
+
+header.header {
+  background: #09090b !important;
+  border-bottom: 1px solid #1a1a1a !important;
+  box-shadow: none !important;
+}
+
+.site-title {
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: #fafafa !important;
+  font-size: 0.875rem;
+}
+
+/* Search */
+site-search button {
+  background: #111111 !important;
+  border: 1px solid #1e1e1e !important;
+  color: #7c7c84 !important;
+  border-radius: 6px !important;
+  transition: background 0.15s, border-color 0.15s !important;
+}
+
+site-search button:hover {
+  background: #18181b !important;
+  border-color: #27272a !important;
+}
+
+/* -----------------------------------------------------------------------------
+   4. SIDEBAR
+   ----------------------------------------------------------------------------- */
+
+.sidebar-pane {
+  background: #09090b !important;
+  border-right: 1px solid #1a1a1a !important;
+}
+
+/* Section group labels */
+.group-label span,
+details summary span {
+  color: #7c7c84 !important;
+  font-size: 0.6875rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  font-weight: 500 !important;
+}
+
+/* All nav links */
+.sidebar-content a {
+  color: #7c7c84;
+  border-radius: 0 !important;
+  font-size: 0.8125rem;
+}
+
+.sidebar-content a:hover {
+  color: #a1a1aa;
+  background: transparent !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Active link */
+.sidebar-content a[aria-current='page'] {
+  color: #fafafa !important;
+  background: transparent !important;
+  font-weight: 600;
+  border-left: 1px solid #fafafa;
+  padding-left: calc(var(--sl-sidebar-item-padding-inline, 0.5rem) - 1px) !important;
+  border-radius: 0 !important;
+}
+
+/* -----------------------------------------------------------------------------
+   5. CONTENT AREA
+   ----------------------------------------------------------------------------- */
+
+.content-panel {
+  background: #09090b;
+}
+
+/* Page title */
+.sl-markdown-content h1 {
+  color: #fafafa;
+  font-size: 1.875rem;
+  font-weight: 800;
+  letter-spacing: -0.75px;
+  line-height: 1.15;
+}
+
+.sl-markdown-content h2 {
+  color: #fafafa;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  border-bottom: 1px solid #1a1a1a;
+  padding-bottom: 0.5rem;
+  margin-top: 2.5rem;
+}
+
+.sl-markdown-content h3 {
+  color: #e4e4e7;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.sl-markdown-content p,
+.sl-markdown-content li {
+  color: #7c7c84;
+  line-height: 1.75;
+}
+
+.sl-markdown-content strong {
+  color: #a1a1aa;
+  font-weight: 600;
+}
+
+.sl-markdown-content a {
+  color: #fafafa;
+  text-underline-offset: 3px;
+  text-decoration-color: #27272a;
+}
+
+.sl-markdown-content a:hover {
+  text-decoration-color: #fafafa;
+}
+
+.sl-markdown-content hr {
+  border-color: #1a1a1a;
+}
+
+/* -----------------------------------------------------------------------------
+   6. CODE BLOCKS (Expressive Code / Shiki)
+   ----------------------------------------------------------------------------- */
+
+/* Inline code */
+.sl-markdown-content :not(pre) > code {
+  background: #111111 !important;
+  border: 1px solid #1e1e1e;
+  border-radius: 4px;
+  color: #a1a1aa !important;
+  padding: 0.1em 0.4em;
+  font-size: 0.875em;
+  font-family: var(--sl-font-mono);
+}
+
+/* Expressive Code wrapper */
+.expressive-code {
+  margin-block: 1.25rem;
+}
+
+/* Code frame background */
+.expressive-code .frame pre {
+  background: #111111 !important;
+  border: 1px solid #1e1e1e !important;
+  border-radius: 6px !important;
+}
+
+/* Expressive Code frame/header bar */
+.expressive-code .frame {
+  border: 1px solid #1e1e1e !important;
+  border-radius: 6px !important;
+  overflow: hidden;
+}
+
+.expressive-code .frame .header {
+  background: #0d0d0d !important;
+  border-bottom: 1px solid #1e1e1e !important;
+}
+
+/* Language / filename label */
+.expressive-code .frame .header .title {
+  color: #7c7c84 !important;
+  font-size: 0.6875rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  font-family: var(--sl-font-mono) !important;
+}
+
+/* Monochrome syntax — Shiki outputs inline style="color:..." on spans.
+   !important overrides inline styles. Single flat color = ultra minimal look. */
+.expressive-code .frame pre code span[style] {
+  color: #a1a1aa !important;
+}
+
+/* Copy button */
+.expressive-code .copy button {
+  color: #7c7c84 !important;
+}
+
+.expressive-code .copy button:hover {
+  color: #a1a1aa !important;
+  background: transparent !important;
+}
+
+/* -----------------------------------------------------------------------------
+   7. TABLES
+   ----------------------------------------------------------------------------- */
+
+.sl-markdown-content table {
+  border: 1px solid #1a1a1a;
+  border-radius: 6px;
+  overflow: hidden;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.sl-markdown-content thead tr {
+  background: #0d0d0d;
+}
+
+.sl-markdown-content thead th {
+  color: #7c7c84 !important;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+  border-bottom: 1px solid #1a1a1a;
+  padding: 0.625rem 1rem;
+}
+
+.sl-markdown-content tbody tr {
+  border-bottom: 1px solid #111111;
+  transition: background 0.15s;
+}
+
+.sl-markdown-content tbody tr:last-child {
+  border-bottom: none;
+}
+
+.sl-markdown-content tbody tr:hover {
+  background: #0d0d0d;
+}
+
+.sl-markdown-content tbody td {
+  color: #7c7c84;
+  padding: 0.625rem 1rem;
+  border-bottom: 1px solid #111111;
+  vertical-align: top;
+}
+
+/* -----------------------------------------------------------------------------
+   8. RIGHT SIDEBAR (table of contents)
+   ----------------------------------------------------------------------------- */
+
+.right-sidebar {
+  border-left: 1px solid #1a1a1a !important;
+}
+
+.right-sidebar-panel {
+  background: #09090b;
+}
+
+starlight-toc a {
+  color: #7c7c84;
+  font-size: 0.8rem;
+  transition: color 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+starlight-toc a:hover {
+  color: #a1a1aa;
+}
+
+starlight-toc a[aria-current='true'] {
+  color: #fafafa !important;
+  font-weight: 500;
+}
+
+/* -----------------------------------------------------------------------------
+   9. PAGINATION
+   ----------------------------------------------------------------------------- */
+
+.pagination-links a {
+  border: 1px solid #1a1a1a !important;
+  background: transparent !important;
+  color: #7c7c84 !important;
+  border-radius: 6px !important;
+  transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.2s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.pagination-links a:hover {
+  border-color: #27272a !important;
+  color: #a1a1aa !important;
+  background: #0d0d0d !important;
+  transform: translateY(-2px);
+}
+
+/* -----------------------------------------------------------------------------
+   10. ASIDE / CALLOUTS
+   ----------------------------------------------------------------------------- */
+
+.starlight-aside {
+  border: 1px solid #1a1a1a;
+  border-left: 2px solid #27272a;
+  background: #0d0d0d;
+  border-radius: 4px;
+}
+
+.starlight-aside--note {
+  border-left-color: #ffffff;
+}
+
+.starlight-aside--tip {
+  border-left-color: #52525b;
+}
+
+.starlight-aside--caution {
+  border-left-color: #3f3f46;
+}
+
+.starlight-aside--danger {
+  border-left-color: #27272a;
+}
+
+.starlight-aside .starlight-aside__title {
+  color: #a1a1aa;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* -----------------------------------------------------------------------------
+   11. SCROLLBAR (webkit)
+   ----------------------------------------------------------------------------- */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+/* -----------------------------------------------------------------------------
+   12. FOCUS VISIBLE
+   ----------------------------------------------------------------------------- */
+
+a:focus-visible,
+button:focus-visible,
+[role="tab"]:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+summary:focus-visible {
+  outline: 2px solid #fafafa;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* -----------------------------------------------------------------------------
+   13. REDUCED MOTION
+   ----------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   14. LIGHT THEME OVERRIDES
+   Overrides for hardcoded dark colors in components 3–12.
+   ----------------------------------------------------------------------------- */
+
+[data-theme='light'] header.header {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e4e4e7 !important;
+}
+
+[data-theme='light'] .site-title {
+  color: #09090b !important;
+}
+
+[data-theme='light'] site-search button {
+  background: #f4f4f5 !important;
+  border: 1px solid #e4e4e7 !important;
+  color: #52525b !important;
+}
+
+[data-theme='light'] site-search button:hover {
+  background: #e4e4e7 !important;
+  border-color: #d4d4d8 !important;
+}
+
+[data-theme='light'] .sidebar-pane {
+  background: #fafafa !important;
+  border-right: 1px solid #e4e4e7 !important;
+}
+
+[data-theme='light'] .group-label span,
+[data-theme='light'] details summary span {
+  color: #52525b !important;
+}
+
+[data-theme='light'] .sidebar-content a {
+  color: #52525b;
+}
+
+[data-theme='light'] .sidebar-content a:hover {
+  color: #27272a;
+}
+
+[data-theme='light'] .sidebar-content a[aria-current='page'] {
+  color: #09090b !important;
+  border-left-color: #09090b;
+}
+
+[data-theme='light'] .content-panel {
+  background: #ffffff;
+}
+
+[data-theme='light'] .sl-markdown-content h1 {
+  color: #09090b;
+}
+
+[data-theme='light'] .sl-markdown-content h2 {
+  color: #09090b;
+  border-bottom-color: #e4e4e7;
+}
+
+[data-theme='light'] .sl-markdown-content h3 {
+  color: #18181b;
+}
+
+[data-theme='light'] .sl-markdown-content p,
+[data-theme='light'] .sl-markdown-content li {
+  color: #52525b;
+}
+
+[data-theme='light'] .sl-markdown-content strong {
+  color: #27272a;
+}
+
+[data-theme='light'] .sl-markdown-content a {
+  color: #09090b;
+  text-decoration-color: #d4d4d8;
+}
+
+[data-theme='light'] .sl-markdown-content a:hover {
+  text-decoration-color: #09090b;
+}
+
+[data-theme='light'] .sl-markdown-content hr {
+  border-color: #e4e4e7;
+}
+
+[data-theme='light'] .sl-markdown-content :not(pre) > code {
+  background: #f4f4f5 !important;
+  border-color: #e4e4e7;
+  color: #52525b !important;
+}
+
+[data-theme='light'] .expressive-code .frame pre {
+  background: #f4f4f5 !important;
+  border-color: #e4e4e7 !important;
+}
+
+[data-theme='light'] .expressive-code .frame {
+  border-color: #e4e4e7 !important;
+}
+
+[data-theme='light'] .expressive-code .frame .header {
+  background: #ffffff !important;
+  border-bottom-color: #e4e4e7 !important;
+}
+
+[data-theme='light'] .expressive-code .frame .header .title {
+  color: #52525b !important;
+}
+
+[data-theme='light'] .expressive-code .frame pre code span[style] {
+  color: #27272a !important;
+}
+
+[data-theme='light'] .expressive-code .copy button {
+  color: #52525b !important;
+}
+
+[data-theme='light'] .expressive-code .copy button:hover {
+  color: #27272a !important;
+}
+
+[data-theme='light'] .sl-markdown-content table {
+  border-color: #e4e4e7;
+}
+
+[data-theme='light'] .sl-markdown-content thead tr {
+  background: #fafafa;
+}
+
+[data-theme='light'] .sl-markdown-content thead th {
+  color: #52525b !important;
+  border-bottom-color: #e4e4e7;
+}
+
+[data-theme='light'] .sl-markdown-content tbody tr {
+  border-bottom-color: #f4f4f5;
+}
+
+[data-theme='light'] .sl-markdown-content tbody tr:hover {
+  background: #fafafa;
+}
+
+[data-theme='light'] .sl-markdown-content tbody td {
+  color: #52525b;
+  border-bottom-color: #f4f4f5;
+}
+
+[data-theme='light'] .right-sidebar {
+  border-left-color: #e4e4e7 !important;
+}
+
+[data-theme='light'] .right-sidebar-panel {
+  background: #fafafa;
+}
+
+[data-theme='light'] starlight-toc a {
+  color: #52525b;
+}
+
+[data-theme='light'] starlight-toc a:hover {
+  color: #27272a;
+}
+
+[data-theme='light'] starlight-toc a[aria-current='true'] {
+  color: #09090b !important;
+}
+
+[data-theme='light'] .pagination-links a {
+  border-color: #e4e4e7 !important;
+  color: #52525b !important;
+}
+
+[data-theme='light'] .pagination-links a:hover {
+  border-color: #d4d4d8 !important;
+  color: #27272a !important;
+  background: #fafafa !important;
+}
+
+[data-theme='light'] .starlight-aside {
+  border-color: #e4e4e7;
+  border-left-color: #d4d4d8;
+  background: #fafafa;
+}
+
+[data-theme='light'] .starlight-aside--note {
+  border-left-color: #09090b;
+}
+
+[data-theme='light'] .starlight-aside--tip {
+  border-left-color: #a1a1aa;
+}
+
+[data-theme='light'] .starlight-aside--caution {
+  border-left-color: #d4d4d8;
+}
+
+[data-theme='light'] .starlight-aside--danger {
+  border-left-color: #e4e4e7;
+}
+
+[data-theme='light'] .starlight-aside .starlight-aside__title {
+  color: #52525b;
+}
+
+[data-theme='light'] ::-webkit-scrollbar-track {
+  background: #fafafa;
+}
+
+[data-theme='light'] ::-webkit-scrollbar-thumb {
+  background: #d4d4d8;
+}
+
+[data-theme='light'] ::-webkit-scrollbar-thumb:hover {
+  background: #a1a1aa;
+}
+
+[data-theme='light'] a:focus-visible,
+[data-theme='light'] button:focus-visible,
+[data-theme='light'] [role="tab"]:focus-visible,
+[data-theme='light'] [role="button"]:focus-visible,
+[data-theme='light'] input:focus-visible,
+[data-theme='light'] summary:focus-visible {
+  outline-color: #09090b;
+}

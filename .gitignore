@@ -19,3 +19,11 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# AI
+.claude/
+.superpowers/
+CLAUDE.md
+.mcp.json
+docs/
+skills-lock.json

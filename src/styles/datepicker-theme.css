@@ -1,0 +1,62 @@
+/* ─── temporal-react-datepicker — Zinc theme ─────────────────────────────── */
+/* Overrides slate-blue defaults with the zinc palette used in the docs site. */
+
+/* Default (dark) */
+.temporal-datepicker {
+  --tdp-bg:            #111111;
+  --tdp-border:        #1e1e1e;
+  --tdp-text:          #e4e4e7;
+  --tdp-text-muted:    #52525b;
+  --tdp-accent:        #fafafa;
+  --tdp-accent-fg:     #09090b;
+  --tdp-day-hover-bg:  rgba(255, 255, 255, 0.06);
+  --tdp-today-text:    #a1a1aa;
+  --tdp-today-ring:    #a1a1aa;
+  --tdp-range-bg:      rgba(250, 250, 250, 0.10);
+  --tdp-range-edge-bg: var(--tdp-accent);
+  --tdp-range-edge-text: var(--tdp-accent-fg);
+  --tdp-disabled-text: #27272a;
+  --tdp-shadow:        0 8px 32px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.4);
+
+  /* Fixed height — always reserves space for 6 rows so the calendar
+     does not jump when navigating between months. */
+  min-height: 345px;
+}
+
+/* Light — system preference */
+@media (prefers-color-scheme: light) {
+  .temporal-datepicker {
+    --tdp-bg:            #ffffff;
+    --tdp-border:        #e4e4e7;
+    --tdp-text:          #18181b;
+    --tdp-text-muted:    #71717a;
+    --tdp-accent:        #09090b;
+    --tdp-accent-fg:     #ffffff;
+    --tdp-day-hover-bg:  #f4f4f5;
+    --tdp-today-text:    #71717a;
+    --tdp-today-ring:    #71717a;
+    --tdp-range-bg:      rgba(9, 9, 11, 0.08);
+    --tdp-range-edge-bg: var(--tdp-accent);
+    --tdp-range-edge-text: var(--tdp-accent-fg);
+    --tdp-disabled-text: #d4d4d8;
+    --tdp-shadow:        0 4px 24px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.06);
+  }
+}
+
+/* Light — Starlight [data-theme] attribute (docs pages) */
+[data-theme='light'] .temporal-datepicker {
+  --tdp-bg:            #ffffff;
+  --tdp-border:        #e4e4e7;
+  --tdp-text:          #18181b;
+  --tdp-text-muted:    #71717a;
+  --tdp-accent:        #09090b;
+  --tdp-accent-fg:     #ffffff;
+  --tdp-day-hover-bg:  #f4f4f5;
+  --tdp-today-text:    #71717a;
+  --tdp-today-ring:    #71717a;
+  --tdp-range-bg:      rgba(9, 9, 11, 0.08);
+  --tdp-range-edge-bg: var(--tdp-accent);
+  --tdp-range-edge-text: var(--tdp-accent-fg);
+  --tdp-disabled-text: #d4d4d8;
+  --tdp-shadow:        0 4px 24px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.06);
+}

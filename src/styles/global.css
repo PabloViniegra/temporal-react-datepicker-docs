@@ -1,0 +1,4 @@
+@import "tailwindcss";
+
+/* Match Starlight's [data-theme="dark"] for Tailwind dark: variants */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));

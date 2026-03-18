@@ -1,0 +1,495 @@
+---
+import { InstallWidget } from '../components/code-block/install-widget';
+import { DatePickerShowcase } from '../components/DatePickerShowcase';
+import '../styles/global.css';
+const title = 'temporal-react-datepicker';
+const description = 'A high-performance, accessible React date picker built on the JavaScript Temporal API.';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        background: #09090b;
+        color: #e4e4e7;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* ── SKIP LINK ── */
+      .skip-link {
+        position: absolute;
+        top: -100%;
+        left: 1rem;
+        padding: 0.5rem 1rem;
+        background: #fafafa;
+        color: #09090b;
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 4px;
+        z-index: 100;
+        transition: top 0.15s;
+      }
+      .skip-link:focus {
+        top: 1rem;
+      }
+
+      /* ── FOCUS ── */
+      a:focus-visible,
+      button:focus-visible {
+        outline: 2px solid #fafafa;
+        outline-offset: 3px;
+        border-radius: 3px;
+      }
+
+      /* ── NAV ── */
+      nav {
+        display: flex;
+        align-items: center;
+        padding: 0 2rem;
+        height: 56px;
+        border-bottom: 1px solid #1a1a1a;
+        position: sticky;
+        top: 0;
+        background: #09090b;
+        z-index: 10;
+      }
+
+      .nav-brand {
+        color: #fafafa;
+        font-size: 0.875rem;
+        font-weight: 700;
+        letter-spacing: -0.3px;
+        text-decoration: none;
+      }
+
+      .nav-links {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        list-style: none;
+        padding: 0;
+      }
+
+      .nav-links a {
+        color: #7c7c84;
+        font-size: 0.8125rem;
+        text-decoration: none;
+        transition: color 0.15s, transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .nav-links a:hover {
+        color: #a1a1aa;
+        transform: translateY(-1px);
+      }
+
+      .nav-npm {
+        border: 1px solid #27272a !important;
+        border-radius: 5px;
+        padding: 0.25rem 0.75rem !important;
+        color: #7c7c84 !important;
+        font-size: 0.75rem !important;
+        font-family: 'JetBrains Mono', monospace;
+      }
+
+      /* ── HERO ── */
+      .hero {
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 6rem 2rem 5rem;
+      }
+
+      .hero-left {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: #111111;
+        border: 1px solid #1e1e1e;
+        border-radius: 20px;
+        padding: 0.25rem 0.875rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-badge-dot {
+        width: 6px;
+        height: 6px;
+        background: #27272a;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+
+      .hero-badge span {
+        color: #7c7c84;
+        font-size: 0.6875rem;
+        letter-spacing: 0.5px;
+      }
+
+      h1 {
+        color: #fafafa;
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 800;
+        letter-spacing: -2px;
+        line-height: 1.05;
+        margin-bottom: 1.25rem;
+      }
+
+      .hero-tagline {
+        color: #7c7c84;
+        font-size: 0.9375rem;
+        line-height: 1.75;
+        margin-bottom: 2rem;
+        max-width: 380px;
+      }
+
+      .hero-tagline code {
+        color: #7c7c84;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8125em;
+        background: #111111;
+        border: 1px solid #1e1e1e;
+        padding: 0.1em 0.4em;
+        border-radius: 4px;
+      }
+
+      .hero-cta {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.25rem;
+      }
+
+      .btn-primary {
+        display: inline-block;
+        background: #fafafa;
+        color: #09090b;
+        font-size: 0.875rem;
+        font-weight: 700;
+        padding: 0.625rem 1.25rem;
+        border-radius: 6px;
+        text-decoration: none;
+        letter-spacing: -0.2px;
+        transition: background 0.15s, transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s;
+      }
+
+      .btn-primary:hover {
+        background: #e4e4e7;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(250, 250, 250, 0.08);
+      }
+
+      .btn-primary:active {
+        transform: scale(0.97) translateY(0);
+        transition-duration: 0.08s;
+      }
+
+      /* ── INSTALL WIDGET (rendered by React component) ── */
+
+      /* ── DATEPICKER SHOWCASE ── */
+      .hero-right {
+        flex-shrink: 0;
+        width: 300px;
+      }
+
+      .calendar-preview {
+        background: #111111;
+        border: 1px solid #1e1e1e;
+        border-radius: 10px;
+        padding: 1.25rem;
+        user-select: none;
+      }
+
+      .cal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+      }
+
+      .cal-nav {
+        color: #27272a;
+        font-size: 0.875rem;
+        cursor: default;
+      }
+
+      .cal-month {
+        color: #a1a1aa;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        letter-spacing: -0.2px;
+      }
+
+      .cal-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        text-align: center;
+        gap: 2px;
+      }
+
+      .cal-weekday {
+        color: #27272a;
+        font-size: 0.625rem;
+        padding: 0.25rem 0;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .cal-day {
+        color: #52525b;
+        font-size: 0.75rem;
+        padding: 0.375rem 0;
+        border-radius: 4px;
+        cursor: default;
+        line-height: 1;
+      }
+
+      .cal-day.empty {
+        color: transparent;
+      }
+
+      .cal-day.today {
+        color: #fafafa;
+        position: relative;
+      }
+
+      .cal-day.today::after {
+        content: '';
+        position: absolute;
+        bottom: 2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 3px;
+        height: 3px;
+        background: #fafafa;
+        border-radius: 50%;
+      }
+
+      .cal-day.selected {
+        background: #fafafa;
+        color: #09090b;
+        font-weight: 700;
+      }
+
+      /* ── FEATURE STRIP ── */
+      .features {
+        border-top: 1px solid #111111;
+        border-bottom: 1px solid #111111;
+        max-width: 960px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .feature {
+        padding: 1.25rem 1.5rem;
+        border-right: 1px solid #111111;
+      }
+
+      .feature:last-child {
+        border-right: none;
+      }
+
+      .feature-label {
+        color: #7c7c84;
+        font-size: 0.625rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-weight: 500;
+        margin-bottom: 0.375rem;
+      }
+
+      .feature-text {
+        color: #7c7c84;
+        font-size: 0.75rem;
+        line-height: 1.5;
+      }
+
+      /* ── KEYFRAMES ── */
+      @keyframes fadeSlideUp {
+        from { opacity: 0; transform: translateY(14px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+      }
+
+      @keyframes pulseDot {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50%       { opacity: 0.25; transform: scale(2); }
+      }
+
+
+      /* ── HERO ENTRANCE ── */
+      .hero-badge   { animation: fadeSlideUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; }
+      h1            { animation: fadeSlideUp 0.5s  0.07s cubic-bezier(0.22, 1, 0.36, 1) both; }
+      .hero-tagline { animation: fadeSlideUp 0.5s  0.14s cubic-bezier(0.22, 1, 0.36, 1) both; }
+      .hero-cta     { animation: fadeSlideUp 0.5s  0.22s cubic-bezier(0.22, 1, 0.36, 1) both; }
+      .hero-right   { animation: fadeIn      0.55s 0.30s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+      /* ── BADGE DOT PULSE ── */
+      .hero-badge-dot {
+        animation: pulseDot 2.8s 1s ease-in-out infinite;
+      }
+
+      /* ── FEATURE STRIP ENTRANCE ── */
+      .feature { animation: fadeSlideUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) both; }
+      .feature:nth-child(1) { animation-delay: 0.44s; }
+      .feature:nth-child(2) { animation-delay: 0.50s; }
+      .feature:nth-child(3) { animation-delay: 0.56s; }
+      .feature:nth-child(4) { animation-delay: 0.62s; }
+
+      /* ── REDUCED MOTION ── */
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 768px) {
+        .hero {
+          flex-direction: column;
+          gap: 2.5rem;
+          padding: 3.5rem 1.5rem 3rem;
+        }
+
+        .hero-right {
+          width: 100%;
+        }
+
+        .calendar-preview {
+          max-width: 300px;
+          margin: 0 auto;
+        }
+
+        .features {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .feature:nth-child(2) {
+          border-right: none;
+        }
+
+        .feature:nth-child(3) {
+          border-right: 1px solid #111111;
+        }
+      }
+
+      @media (max-width: 480px) {
+        nav { padding: 0 1.25rem; }
+
+        .features {
+          grid-template-columns: 1fr;
+        }
+
+        .feature {
+          border-right: none;
+          border-bottom: 1px solid #111111;
+        }
+
+        .feature:last-child {
+          border-bottom: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <!-- NAV -->
+    <nav aria-label="Site navigation">
+      <a href="/" class="nav-brand">temporal-react-datepicker</a>
+      <ul class="nav-links">
+        <li><a href="/guides/getting-started/">Guides</a></li>
+        <li><a href="/reference/props/">Reference</a></li>
+        <li>
+          <a
+            href="https://www.npmjs.com/package/temporal-react-datepicker"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="nav-npm"
+            aria-label="npm package (opens in new tab)"
+          >npm<span aria-hidden="true"> ↗</span></a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Overview" id="main-content">
+      <div class="hero-left">
+        <div class="hero-badge">
+          <span class="hero-badge-dot" aria-hidden="true"></span>
+          <span>Built on Temporal API</span>
+        </div>
+
+        <h1>The date picker<br />the web deserves</h1>
+
+        <p class="hero-tagline">
+          Immutable <code>Temporal.PlainDate</code> logic.
+          Accessible by default. Zero legacy Date objects.
+        </p>
+
+        <div class="hero-cta">
+          <a href="/guides/getting-started/" class="btn-primary">Get Started →</a>
+
+          <InstallWidget client:load />
+        </div>
+      </div>
+
+      <!-- Interactive datepicker showcase -->
+      <div class="hero-right">
+        <DatePickerShowcase client:load />
+      </div>
+    </section>
+
+    <!-- FEATURE STRIP -->
+    <section class="features" aria-label="Features">
+      <div class="feature">
+        <div class="feature-label">Temporal API</div>
+        <div class="feature-text">Immutable PlainDate. No timezone bugs.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-label">Accessible</div>
+        <div class="feature-text">Full keyboard nav. ARIA grid roles.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-label">Themeable</div>
+        <div class="feature-text">17 CSS tokens. Dark + light auto.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-label">i18n</div>
+        <div class="feature-text">BCP 47 locale. Full labels override.</div>
+      </div>
+    </section>
+
+
+  </body>
+</html>

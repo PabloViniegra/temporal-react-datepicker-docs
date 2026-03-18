@@ -1,0 +1,32 @@
+---
+import { Code } from 'astro:components';
+import { CopyButton } from './copy-button';
+
+interface Props {
+  code: string;
+  lang?: string;
+  title?: string;
+}
+
+const { code, lang = 'tsx', title } = Astro.props;
+---
+
+<div class="not-content not-prose w-full my-6">
+  <div class="flex flex-col overflow-hidden rounded-lg bg-[#0d0d0d] border border-[#1e1e1e]">
+    <div class="flex h-9 items-center justify-between px-3 border-b border-[#1e1e1e] bg-[#0a0a0a]">
+      <span class="text-xs text-[#52525b] font-mono">{title ?? lang}</span>
+      <CopyButton client:load content={code} />
+    </div>
+    <div class="overflow-x-auto bg-[#111111] text-sm leading-6 p-4">
+      <Code code={code} lang={lang} theme="one-dark-pro" />
+    </div>
+  </div>
+</div>
+
+<style>
+  div :global(.astro-code) {
+    background-color: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+</style>
