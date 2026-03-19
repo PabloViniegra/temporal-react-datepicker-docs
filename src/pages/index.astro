@@ -240,7 +240,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         font-weight: 500;
         letter-spacing: 1.5px;
         text-transform: uppercase;
-        color: #3f3f46;
+        color: #71717a;
         margin-bottom: 0.75rem;
       }
 
@@ -502,14 +502,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <div class="hero-cta">
           <a href={`${base}/guides/getting-started/`} class="btn-primary">Get Started →</a>
 
-          <InstallWidget client:load />
+          <InstallWidget client:only="react" />
         </div>
       </div>
 
       <!-- Interactive datepicker showcase -->
       <div class="hero-right">
         <p class="hero-right-label" aria-hidden="true">Live preview</p>
-        <DatePickerShowcase client:load />
+        <DatePickerShowcase client:only="react" />
       </div>
     </section>
 

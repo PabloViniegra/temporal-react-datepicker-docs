@@ -46,7 +46,7 @@ export function DatePickerShowcase() {
               onClick={() => handleModeChange(tab.value)}
               style={{
                 background: isActive ? '#18181b' : 'transparent',
-                color: isActive ? '#fafafa' : '#3f3f46',
+                color: isActive ? '#fafafa' : '#71717a',
                 border: '1px solid',
                 borderColor: isActive ? '#27272a' : 'transparent',
                 borderRadius: '6px',
@@ -64,7 +64,7 @@ export function DatePickerShowcase() {
               }}
               onMouseLeave={(e) => {
                 if (!isActive) {
-                  (e.currentTarget as HTMLButtonElement).style.color = '#3f3f46';
+                  (e.currentTarget as HTMLButtonElement).style.color = '#71717a';
                 }
               }}
             >
