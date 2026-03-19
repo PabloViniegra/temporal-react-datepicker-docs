@@ -19,7 +19,7 @@
         "shiki": "^4.0.2",
         "tailwind-merge": "^3.5.0",
         "tailwindcss": "^4.2.1",
-        "temporal-react-datepicker": "^1.0.0",
+        "temporal-react-datepicker": "^1.0.1",
       },
       "devDependencies": {
         "@react-symbols/icons": "^1.3.1",
@@ -941,7 +941,7 @@
 
     "tapable": ["tapable@2.3.0", "", {}, "sha512-g9ljZiwki/LfxmQADO3dEY1CbpmXT5Hm2fJ+QaGKwSXUylMybePR7/67YW7jOrrvjEgL1Fmz5kzyAjWVWLlucg=="],
 
-    "temporal-react-datepicker": ["temporal-react-datepicker@1.0.0", "", { "peerDependencies": { "@js-temporal/polyfill": ">=0.5.1", "react": ">=19.0.0 <20.0.0", "react-dom": ">=19.0.0 <20.0.0" } }, "sha512-bOAj01X7ktTYuR01YL43+VCPcsvVhJiICIjRIMnhC8gMULmppFEzPASr4Iy1TfYHaXh2w3KZhkh6IUp3XTKgsQ=="],
+    "temporal-react-datepicker": ["temporal-react-datepicker@1.0.1", "", { "peerDependencies": { "@js-temporal/polyfill": ">=0.5.1", "react": ">=19.0.0 <20.0.0", "react-dom": ">=19.0.0 <20.0.0" } }, "sha512-jZfV5SoaP1OFCraFmLOyR1tcyeO2Tntz41ERId2DeEvSqf7WKrjZkX/hcMsh7P7EjUUKG4DH9uqyLATsxuvySw=="],
 
     "tiny-inflate": ["tiny-inflate@1.0.3", "", {}, "sha512-pkY1fj1cKHb2seWDy0B16HeWyczlJA9/WW3u3c4z/NiWDsO3DOU5D7nhTLE9CF0yXv/QZFY7sEJmj24dK+Rrqw=="],
 
