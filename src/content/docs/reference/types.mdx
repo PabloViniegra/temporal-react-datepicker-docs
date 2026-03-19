@@ -1,0 +1,68 @@
+---
+title: Types
+description: TypeScript type definitions exported by temporal-react-datepicker.
+---
+
+import DocCodeBlock from '@/components/code-block/DocCodeBlock.astro';
+
+export const codeDateRange = `type DateRange = {
+  start: Temporal.PlainDate
+  end: Temporal.PlainDate | null
+}`;
+
+export const codeDayState = `interface DayState {
+  selected: boolean      // true in single mode when this date === value
+  inRange: boolean       // true for days between range.start and range.end
+  isRangeStart: boolean  // true when this date === range.start
+  isRangeEnd: boolean    // true when this date === range.end
+}`;
+
+export const codeLabels = `interface Labels {
+  // Calendar header buttons
+  prevMonth: string
+  nextMonth: string
+  clearSelection: string
+  selectMonth: (monthName: string) => string   // e.g. "Select month, currently March"
+  selectYear: (year: number) => string         // e.g. "Select year, currently 2026"
+
+  // Week number column
+  weekNumberHeader: string                     // column header aria-label
+  weekNumber: (weekNum: number) => string      // row aria-label, e.g. "Week 12"
+
+  // Range context (appended to day aria-label)
+  rangeStart: string                           // e.g. ", range start"
+  rangeEnd: string                             // e.g. ", range end"
+  inRange: string                              // e.g. ", in range"
+
+  // aria-live announcements on panel switch
+  monthPanelAnnouncement: string
+  yearPanelAnnouncement: string
+
+  // Month panel (jump nav)
+  prevYear: string
+  nextYear: string
+  monthPanelTitle: string
+
+  // Year panel (jump nav)
+  prevYearWindow: string
+  nextYearWindow: string
+  yearPanelTitle: string
+}`;
+
+## `DateRange`
+
+<DocCodeBlock lang="ts" code={codeDateRange} />
+
+Used with `mode="range"`. After the first click `end` is `null`; after the second click both fields are set.
+
+## `DayState`
+
+Passed as the second argument to `renderDayContent`.
+
+<DocCodeBlock lang="ts" code={codeDayState} />
+
+## `Labels`
+
+Controls UI strings (button labels, panel titles, range context suffixes). Pass `Partial<Labels>` to the `labels` prop — unspecified strings fall back to English defaults.
+
+<DocCodeBlock lang="ts" code={codeLabels} />

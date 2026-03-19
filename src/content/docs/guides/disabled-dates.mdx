@@ -1,0 +1,84 @@
+---
+title: Disabled Dates
+description: Block specific dates using the isDateDisabled prop.
+---
+
+import DocCodeBlock from '@/components/code-block/DocCodeBlock.astro';
+
+export const codeWeekends = `<TemporalDatePicker
+  value={date}
+  onChange={setDate}
+  isDateDisabled={d => d.dayOfWeek >= 6}
+/>`;
+
+export const codePastDates = `import { Temporal } from '@js-temporal/polyfill'
+
+const today = Temporal.Now.plainDateISO()
+
+<TemporalDatePicker
+  value={date}
+  onChange={setDate}
+  isDateDisabled={d => Temporal.PlainDate.compare(d, today) < 0}
+/>`;
+
+export const codeFutureDates = `<TemporalDatePicker
+  value={date}
+  onChange={setDate}
+  isDateDisabled={d => Temporal.PlainDate.compare(d, today) > 0}
+/>`;
+
+export const codeHolidays = `const HOLIDAYS = new Set(['2026-01-01', '2026-12-25', '2026-12-26'])
+
+<TemporalDatePicker
+  value={date}
+  onChange={setDate}
+  isDateDisabled={d => HOLIDAYS.has(d.toString())}
+/>`;
+
+export const codeCombined = `<TemporalDatePicker
+  value={date}
+  onChange={setDate}
+  isDateDisabled={d =>
+    d.dayOfWeek >= 6 ||
+    Temporal.PlainDate.compare(d, today) < 0
+  }
+/>`;
+
+export const codeRangeBlocked = `<TemporalDatePicker
+  mode="range"
+  value={range}
+  onChange={setRange}
+  isDateDisabled={d => d.dayOfWeek >= 6}
+/>`;
+
+Pass a function to `isDateDisabled`. Return `true` to disable a date — disabled days are not clickable and not keyboard-focusable.
+
+## Weekends
+
+<DocCodeBlock lang="tsx" code={codeWeekends} />
+
+`dayOfWeek` follows ISO 8601: Monday = 1, Sunday = 7.
+
+## Past dates
+
+<DocCodeBlock lang="tsx" code={codePastDates} />
+
+## Future dates
+
+<DocCodeBlock lang="tsx" code={codeFutureDates} />
+
+## Specific dates (e.g. bank holidays)
+
+<DocCodeBlock lang="tsx" code={codeHolidays} />
+
+`Temporal.PlainDate.toString()` returns the ISO 8601 string `YYYY-MM-DD`.
+
+## Combined rules
+
+<DocCodeBlock lang="tsx" code={codeCombined} />
+
+## Range mode — blocked crossing
+
+In `mode="range"`, a disabled date also blocks the range from crossing it. The user cannot select a start and end that span across a disabled day.
+
+<DocCodeBlock lang="tsx" code={codeRangeBlocked} />

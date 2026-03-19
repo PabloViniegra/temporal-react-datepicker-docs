@@ -1,0 +1,101 @@
+---
+title: Internationalization
+description: Control locale and UI string labels for full i18n support.
+---
+
+import DocCodeBlock from '@/components/code-block/DocCodeBlock.astro';
+
+export const codeLocale = `// Spanish (Spain)
+<TemporalDatePicker value={date} onChange={setDate} locale="es-ES" />
+
+// English (US)
+<TemporalDatePicker value={date} onChange={setDate} locale="en-US" />
+
+// French
+<TemporalDatePicker value={date} onChange={setDate} locale="fr-FR" />
+
+// Japanese
+<TemporalDatePicker value={date} onChange={setDate} locale="ja-JP" />
+
+// Arabic (right-to-left — layout RTL must be handled by the consumer)
+<TemporalDatePicker value={date} onChange={setDate} locale="ar-SA" />
+
+// Portuguese (Brazil)
+<TemporalDatePicker value={date} onChange={setDate} locale="pt-BR" />`;
+
+export const codeRuntimeLocale = `const [locale, setLocale] = useState('en-US')
+
+<select onChange={e => setLocale(e.target.value)}>
+  <option value="en-US">English</option>
+  <option value="es-ES">Español</option>
+  <option value="fr-FR">Français</option>
+  <option value="de-DE">Deutsch</option>
+</select>
+
+<TemporalDatePicker value={date} onChange={setDate} locale={locale} />`;
+
+export const codeLabels = `import type { Labels } from 'temporal-react-datepicker'
+
+const spanishLabels: Partial<Labels> = {
+  prevMonth: 'Mes anterior',
+  nextMonth: 'Mes siguiente',
+  clearSelection: 'Limpiar selección',
+  selectMonth: name => \`Seleccionar mes, actualmente \${name}\`,
+  selectYear: year => \`Seleccionar año, actualmente \${year}\`,
+  weekNumberHeader: 'Semana',
+  weekNumber: n => \`Semana \${n}\`,
+  rangeStart: ', inicio de rango',
+  rangeEnd: ', fin de rango',
+  inRange: ', dentro del rango',
+  monthPanelAnnouncement: 'Selector de mes',
+  yearPanelAnnouncement: 'Selector de año',
+  prevYear: 'Año anterior',
+  nextYear: 'Año siguiente',
+  monthPanelTitle: 'Seleccionar mes',
+  prevYearWindow: 'Ventana anterior',
+  nextYearWindow: 'Ventana siguiente',
+  yearPanelTitle: 'Seleccionar año',
+}
+
+<TemporalDatePicker value={date} onChange={setDate} locale="es-ES" labels={spanishLabels} />`;
+
+export const codePartialLabels = `<TemporalDatePicker
+  mode="range"
+  value={range}
+  onChange={setRange}
+  locale="fr-FR"
+  labels={{
+    rangeStart: ', début de la plage',
+    rangeEnd: ', fin de la plage',
+    inRange: ', dans la plage',
+  }}
+/>`;
+
+The component has two separate i18n concerns:
+
+- **`locale`** — controls date formatting (month names, weekday headers, day `aria-label`s) via the browser's `Intl` API.
+- **`labels`** — controls UI strings (button labels, panel titles, range context suffixes).
+
+## The `locale` prop
+
+Accepts any [BCP 47 language tag](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument). Defaults to `navigator.language`.
+
+<DocCodeBlock lang="tsx" code={codeLocale} />
+
+## Runtime locale switching
+
+Pass a state variable to switch locale at runtime:
+
+<DocCodeBlock lang="tsx" code={codeRuntimeLocale} />
+
+## The `labels` prop
+
+UI strings are controlled separately via `labels`. The default language is English. Pass `Partial<Labels>` to override any string — the rest fall back to English defaults.
+
+<DocCodeBlock lang="tsx" code={codeLabels} />
+
+You only need to supply the strings you want to override. For example, to translate only the range context suffixes for French:
+
+<DocCodeBlock lang="tsx" code={codePartialLabels} />
+
+For the full `Labels` interface, see the [Types reference](/reference/types/).

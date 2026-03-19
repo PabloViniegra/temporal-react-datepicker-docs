@@ -1,0 +1,43 @@
+---
+title: Theming
+description: Customize the date picker appearance with CSS custom properties.
+---
+
+import DocCodeBlock from '@/components/code-block/DocCodeBlock.astro';
+
+export const codeEmerald = `/* Emerald theme */
+.my-app .temporal-datepicker {
+  --tdp-accent:     #10b981;
+  --tdp-accent-fg:  #ffffff;
+  --tdp-today-text: #10b981;
+  --tdp-today-ring: #10b981;
+}`;
+
+Override CSS custom properties on `.temporal-datepicker` or any ancestor element.
+
+<DocCodeBlock lang="css" code={codeEmerald} />
+
+The default theme is **dark**. Light mode is applied automatically via `@media (prefers-color-scheme: light)`.
+
+## CSS tokens
+
+| Token | Default (dark) | Description |
+|---|---|---|
+| `--tdp-accent` | `#38bdf8` | Accent color — selected day, focus ring, range edges. |
+| `--tdp-accent-fg` | `#0f172a` | Foreground on accent background. |
+| `--tdp-bg` | `#1e293b` | Calendar background. |
+| `--tdp-border` | `#334155` | Border color. |
+| `--tdp-text` | `#e2e8f0` | Primary text. |
+| `--tdp-text-muted` | `#64748b` | Muted text (weekday headers, week numbers). |
+| `--tdp-day-hover-bg` | `rgba(255,255,255,0.06)` | Day button hover background. |
+| `--tdp-today-text` | `#38bdf8` | Today text color. |
+| `--tdp-today-ring` | `#38bdf8` | Today indicator dot color. |
+| `--tdp-range-bg` | `rgba(56,189,248,0.15)` | Background for days inside a range. |
+| `--tdp-range-edge-bg` | `var(--tdp-accent)` | Background for range start/end. |
+| `--tdp-range-edge-text` | `var(--tdp-accent-fg)` | Foreground for range start/end. |
+| `--tdp-disabled-text` | `#334155` | Disabled day text color. |
+| `--tdp-weeknum-text` | `var(--tdp-text-muted)` | Week number column text. |
+| `--tdp-radius` | `12px` | Container border radius. |
+| `--tdp-day-radius` | `8px` | Day button border radius. |
+| `--tdp-day-size` | `36px` | Day button size (width and height). |
+| `--tdp-shadow` | (dark shadow) | Container box shadow. |

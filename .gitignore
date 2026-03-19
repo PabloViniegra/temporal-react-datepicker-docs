@@ -25,6 +25,6 @@ pnpm-debug.log*
 .superpowers/
 CLAUDE.md
 .mcp.json
-docs/
+/docs/
 skills-lock.json
 .impeccable.md

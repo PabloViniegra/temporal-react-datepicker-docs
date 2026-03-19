@@ -1,0 +1,100 @@
+---
+title: Custom Day Content
+description: Render custom content inside each day cell using renderDayContent.
+---
+
+import DocCodeBlock from '@/components/code-block/DocCodeBlock.astro';
+
+export const codeSignature = `renderDayContent?: (date: Temporal.PlainDate, state: DayState) => ReactNode`;
+
+export const codeDayState = `interface DayState {
+  selected: boolean      // single mode: this date === value
+  inRange: boolean       // range mode: between range.start and range.end
+  isRangeStart: boolean  // this date === range.start
+  isRangeEnd: boolean    // this date === range.end
+}`;
+
+export const codeBoldSelected = `<TemporalDatePicker
+  value={date}
+  onChange={setDate}
+  renderDayContent={(d, { selected }) => (
+    <span style={{ fontWeight: selected ? 800 : 400 }}>{d.day}</span>
+  )}
+/>`;
+
+export const codeDotFridays = `<TemporalDatePicker
+  value={date}
+  onChange={setDate}
+  renderDayContent={(d, { selected }) => (
+    <span style={{ position: 'relative', display: 'inline-flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
+      {d.day}
+      {d.dayOfWeek === 5 && (
+        <span style={{
+          width: 3, height: 3, borderRadius: '50%',
+          background: selected ? 'currentColor' : '#38bdf8'
+        }} />
+      )}
+    </span>
+  )}
+/>`;
+
+export const codeRangeBadges = `<TemporalDatePicker
+  mode="range"
+  value={range}
+  onChange={setRange}
+  renderDayContent={(d, { isRangeStart, isRangeEnd }) => (
+    <span style={{ position: 'relative' }}>
+      {d.day}
+      {isRangeStart && (
+        <span style={{ position: 'absolute', top: -4, right: -4, fontSize: 8, fontWeight: 700 }}>S</span>
+      )}
+      {isRangeEnd && (
+        <span style={{ position: 'absolute', top: -4, right: -4, fontSize: 8, fontWeight: 700 }}>E</span>
+      )}
+    </span>
+  )}
+/>`;
+
+export const codeEventHighlights = `const EVENTS = new Set(['2026-03-10', '2026-03-18', '2026-03-25'])
+
+<TemporalDatePicker
+  value={date}
+  onChange={setDate}
+  renderDayContent={(d, { selected }) => (
+    <span style={{ position: 'relative', display: 'inline-flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
+      {d.day}
+      {EVENTS.has(d.toString()) && (
+        <span style={{
+          width: 4, height: 4, borderRadius: '50%',
+          background: selected ? 'white' : '#f472b6'
+        }} />
+      )}
+    </span>
+  )}
+/>`;
+
+The `renderDayContent` prop lets you replace the default day number with any React node. It receives the `Temporal.PlainDate` for the cell and a `DayState` object describing its current state.
+
+<DocCodeBlock lang="ts" code={codeSignature} />
+
+If `renderDayContent` is not provided, the component renders the day number by default.
+
+## DayState
+
+<DocCodeBlock lang="ts" code={codeDayState} />
+
+## Bold selected day
+
+<DocCodeBlock lang="tsx" code={codeBoldSelected} />
+
+## Dot indicator on Fridays
+
+<DocCodeBlock lang="tsx" code={codeDotFridays} />
+
+## Range start / end badges
+
+<DocCodeBlock lang="tsx" code={codeRangeBadges} />
+
+## Event highlights from an external data source
+
+<DocCodeBlock lang="tsx" code={codeEventHighlights} />

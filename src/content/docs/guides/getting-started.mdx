@@ -1,0 +1,78 @@
+---
+title: Getting Started
+description: Install temporal-react-datepicker and build your first date picker.
+---
+
+import { InstallWidget } from '@/components/code-block/install-widget';
+import DocCodeBlock from '@/components/code-block/DocCodeBlock.astro';
+
+export const codeBasicUsage = `import { useState } from 'react'
+import { Temporal } from '@js-temporal/polyfill'
+import { TemporalDatePicker } from 'temporal-react-datepicker'
+
+type DateValue = Temporal.PlainDate | undefined
+
+function App() {
+  const [date, setDate] = useState<DateValue>()
+
+  return <TemporalDatePicker value={date} onChange={setDate} />
+}`;
+
+export const codeClearable = `<TemporalDatePicker
+  clearable
+  value={date}
+  onChange={setDate}
+/>`;
+
+`temporal-react-datepicker` is a React date picker built on the [Temporal API](https://tc39.es/proposal-temporal/).
+Pick a date, get back an immutable `Temporal.PlainDate` — no `Date` objects, no timezone surprises.
+
+<div class="gs-requirements not-content">
+  <span class="gs-req-label">Requires</span>
+  <span class="gs-req-badge">React 19+</span>
+  <span class="gs-req-dot" aria-hidden="true"></span>
+  <span class="gs-req-badge"><code>@js-temporal/polyfill</code></span>
+</div>
+
+## Installation
+
+<InstallWidget client:load packages={["temporal-react-datepicker", "@js-temporal/polyfill"]} />
+
+## Basic usage
+
+<DocCodeBlock lang="tsx" code={codeBasicUsage} />
+
+The `value` prop accepts a `Temporal.PlainDate` (or `undefined` when nothing is selected).
+`onChange` fires with the newly selected date each time the user picks a day.
+
+## Clearable
+
+Pass `clearable` to show a **×** button that resets the selection.
+When cleared, `onChange` receives `undefined`.
+
+<DocCodeBlock lang="tsx" code={codeClearable} />
+
+## Next steps
+
+<div class="gs-next-steps not-content">
+  <a href="/guides/date-range/" class="gs-next-card">
+    <span class="gs-next-title">Date Range</span>
+    <span class="gs-next-desc">Select a start and end date with a single picker.</span>
+    <span class="gs-next-arrow" aria-hidden="true">→</span>
+  </a>
+  <a href="/guides/disabled-dates/" class="gs-next-card">
+    <span class="gs-next-title">Disabled Dates</span>
+    <span class="gs-next-desc">Block weekends, holidays, or any custom rule.</span>
+    <span class="gs-next-arrow" aria-hidden="true">→</span>
+  </a>
+  <a href="/guides/i18n/" class="gs-next-card">
+    <span class="gs-next-title">Internationalization</span>
+    <span class="gs-next-desc">BCP 47 locale and custom weekday label overrides.</span>
+    <span class="gs-next-arrow" aria-hidden="true">→</span>
+  </a>
+  <a href="/guides/theming/" class="gs-next-card">
+    <span class="gs-next-title">Theming</span>
+    <span class="gs-next-desc">17 CSS custom properties for full visual control.</span>
+    <span class="gs-next-arrow" aria-hidden="true">→</span>
+  </a>
+</div>

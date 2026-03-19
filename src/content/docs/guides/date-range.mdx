@@ -1,0 +1,56 @@
+---
+title: Date Range
+description: Select a start and end date with mode="range".
+---
+
+import DocCodeBlock from '@/components/code-block/DocCodeBlock.astro';
+
+export const codeRangeBasic = `import { useState } from 'react'
+import type { DateRange } from 'temporal-react-datepicker'
+import { TemporalDatePicker } from 'temporal-react-datepicker'
+
+function App() {
+  const [range, setRange] = useState<DateRange | undefined>(undefined)
+
+  return (
+    <TemporalDatePicker
+      mode="range"
+      value={range}
+      onChange={setRange}
+    />
+  )
+}`;
+
+export const codeDateRangeType = `type DateRange = {
+  start: Temporal.PlainDate
+  end: Temporal.PlainDate | null
+}`;
+
+export const codeClearableRange = `<TemporalDatePicker
+  mode="range"
+  clearable
+  value={range}
+  onChange={setRange}
+/>`;
+
+Pass `mode="range"` to switch the picker into range selection mode. The user clicks once to set the start date and again to set the end date.
+
+<DocCodeBlock lang="tsx" code={codeRangeBasic} />
+
+## The `DateRange` type
+
+<DocCodeBlock lang="ts" code={codeDateRangeType} />
+
+After the **first click**, `onChange` fires with `end: null` — the range is open. After the **second click**, both `start` and `end` are set.
+
+## Clearable range
+
+Add `clearable` to show a `×` button. When clearable, `onChange` is widened to `(range: DateRange | undefined) => void`:
+
+<DocCodeBlock lang="tsx" code={codeClearableRange} />
+
+## Navigating months and years
+
+Click the **month name** or **year** in the calendar header to jump directly to a month or year selector panel. Press `Escape` to return to the calendar without making a selection.
+
+This works in both `single` and `range` mode.
