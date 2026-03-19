@@ -1296,6 +1296,93 @@ summary:focus-visible {
 }
 
 /* -----------------------------------------------------------------------------
+   RESPONSIVE — Tables (all docs pages)
+   ----------------------------------------------------------------------------- */
+
+/* Ensure tables scroll horizontally rather than overflow layout on small screens */
+.sl-markdown-content table {
+  display: block;
+  overflow-x: auto;
+  overflow-y: hidden; /* keeps border-radius clipping */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* -----------------------------------------------------------------------------
+   RESPONSIVE — Playground mobile (≤560px stacked, ≤480px small)
+   ----------------------------------------------------------------------------- */
+
+/* Touch target improvements for coarse pointer (touch) devices */
+@media (pointer: coarse) {
+  /* Expand toggle switch hit area without changing visual size */
+  .pg-switch {
+    position: relative;
+  }
+  .pg-switch::before {
+    content: '';
+    position: absolute;
+    inset: -13px -7px;
+  }
+
+  /* Taller mode buttons for easier tapping */
+  .pg-mode-btn {
+    padding: 7px 10px;
+    min-height: 36px;
+  }
+
+  /* Taller select for easier tapping */
+  .pg-select {
+    padding: 8px 8px;
+    min-height: 36px;
+  }
+}
+
+/* Mobile playground layout tweaks at stacked breakpoint */
+@media (max-width: 560px) {
+  .pg-preview {
+    min-height: 260px;
+    padding: 20px 16px;
+  }
+
+  /* PropsPanel: horizontal 2-column grid to reduce scrolling */
+  .pg-props {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 12px;
+  }
+
+  .pg-props__heading {
+    grid-column: 1 / -1;
+  }
+
+  /* Restore border on all props in grid context */
+  .pg-prop {
+    border-bottom: 1px solid #1a1a1a;
+    padding-bottom: 10px;
+  }
+}
+
+/* Very small screens: single-column props */
+@media (max-width: 375px) {
+  .pg-props {
+    grid-template-columns: 1fr;
+  }
+
+  .pg-tabs {
+    margin-bottom: 20px;
+  }
+
+  .pg-tab {
+    margin-right: 16px;
+    font-size: 0.8125rem;
+  }
+
+  .pg-preview {
+    min-height: 220px;
+    padding: 16px 12px;
+  }
+}
+
+/* -----------------------------------------------------------------------------
    14. REDUCED MOTION
    ----------------------------------------------------------------------------- */
 
