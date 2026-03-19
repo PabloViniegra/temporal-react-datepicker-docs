@@ -91,7 +91,7 @@ header.header {
   font-weight: 400 !important;
   font-size: 0.8125rem !important;
   letter-spacing: 0 !important;
-  color: #71717a !important;
+  color: #a1a1aa !important;
   text-decoration: none !important;
   transition: color 0.25s cubic-bezier(0.22, 1, 0.36, 1) !important;
   animation: brandSlideIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both !important;
@@ -113,6 +113,10 @@ site-search button {
 site-search button:hover {
   background: #18181b !important;
   border-color: #27272a !important;
+}
+
+site-search button kbd {
+  color: #a1a1aa !important;
 }
 
 /* -----------------------------------------------------------------------------
@@ -464,7 +468,7 @@ summary:focus-visible {
 }
 
 .gs-req-label {
-  color: #3f3f46;
+  color: #a1a1aa;
   font-size: 0.6875rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -545,7 +549,7 @@ summary:focus-visible {
 }
 
 .gs-next-desc {
-  color: #52525b;
+  color: #a1a1aa;
   font-size: 0.8125rem;
   line-height: 1.5;
 }
@@ -687,7 +691,7 @@ summary:focus-visible {
 
 .pg-tab {
   background: transparent;
-  color: #52525b;
+  color: #a1a1aa;
   border: none;
   border-bottom: 2px solid transparent;
   margin-bottom: -1px;
@@ -777,7 +781,7 @@ summary:focus-visible {
 }
 
 .pg-prop__name {
-  color: #71717a;
+  color: #a1a1aa;
   font-size: 0.75rem;
   font-weight: 500;
   font-family: var(--sl-font-mono);
@@ -792,7 +796,7 @@ summary:focus-visible {
 }
 
 .pg-prop__value {
-  color: #3f3f46;
+  color: #7c7c84;
   font-size: 0.6875rem;
   font-family: var(--sl-font-mono);
   transition: color 0.2s;
@@ -816,7 +820,7 @@ summary:focus-visible {
 .pg-mode-btn {
   flex: 1;
   background: transparent;
-  color: #52525b;
+  color: #a1a1aa;
   border: none;
   border-radius: 4px;
   padding: 4px 10px;

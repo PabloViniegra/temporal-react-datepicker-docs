@@ -20,7 +20,7 @@ const CodeBlockHeader = ({ children, className, ...props }: ComponentProps<"div"
     className={cn(
       "not-prose flex h-9 items-center justify-between px-3 py-1.5",
       "border-b border-[#1e1e1e] bg-[#0a0a0a]",
-      "text-xs text-[#52525b] font-mono",
+      "text-xs text-[#a1a1aa] font-mono",
       className,
     )}
     {...props}
@@ -31,7 +31,7 @@ const CodeBlockHeader = ({ children, className, ...props }: ComponentProps<"div"
 
 const CodeBlockGroup = ({ children, className, ...props }: ComponentProps<"div">) => (
   <div
-    className={cn("flex items-center gap-2 text-xs text-[#52525b] font-mono", className)}
+    className={cn("flex items-center gap-2 text-xs text-[#a1a1aa] font-mono", className)}
     {...props}
   >
     {children}
