@@ -25,30 +25,6 @@ export default defineConfig({
           },
       ],
       customCss: ['./src/styles/global.css', './src/styles/custom.css'],
-      head: [
-          {
-              tag: 'link',
-              attrs: {
-                  rel: 'preconnect',
-                  href: 'https://fonts.googleapis.com',
-              },
-          },
-          {
-              tag: 'link',
-              attrs: {
-                  rel: 'preconnect',
-                  href: 'https://fonts.gstatic.com',
-                  crossorigin: true,
-              },
-          },
-          {
-              tag: 'link',
-              attrs: {
-                  rel: 'stylesheet',
-                  href: 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800&family=JetBrains+Mono:wght@400;500&display=swap',
-              },
-          },
-      ],
       sidebar: [
           {
               label: 'Guides',

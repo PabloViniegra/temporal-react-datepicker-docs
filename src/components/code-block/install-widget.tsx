@@ -28,7 +28,7 @@ export function InstallWidget({ packages = ["temporal-react-datepicker"] }: Inst
     <div className="not-content w-full max-w-xl">
       <CodeBlock>
         {/* Tab bar — package managers only */}
-        <div className="flex border-b border-[#1e1e1e]">
+        <div role="tablist" aria-label="Package manager" className="flex border-b border-[#1e1e1e]">
           {managers.map((pm) => (
             <button
               key={pm}
@@ -40,7 +40,7 @@ export function InstallWidget({ packages = ["temporal-react-datepicker"] }: Inst
                 "border-r border-[#1e1e1e] last:border-r-0 min-w-[44px]",
                 active === pm
                   ? "text-[#e4e4e7] bg-[#111111]"
-                  : "text-[#3f3f46] bg-[#0a0a0a] hover:text-[#71717a]",
+                  : "text-[#a1a1aa] bg-[#0a0a0a] hover:text-[#d4d4d8]",
               ].join(" ")}
             >
               {pm}

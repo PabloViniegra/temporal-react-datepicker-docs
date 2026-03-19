@@ -4,6 +4,7 @@ import { DatePickerShowcase } from '../components/DatePickerShowcase';
 import '../styles/global.css';
 const title = 'temporal-react-datepicker';
 const description = 'A high-performance, accessible React date picker built on the JavaScript Temporal API.';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <!doctype html>
@@ -13,19 +14,13 @@ const description = 'A high-performance, accessible React date picker built on t
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800&family=JetBrains+Mono:wght@400;500&display=swap"
-    />
     <style>
       *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
       body {
         background: #09090b;
         color: #e4e4e7;
-        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        font-family: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
         min-height: 100vh;
         -webkit-font-smoothing: antialiased;
       }
@@ -71,10 +66,10 @@ const description = 'A high-performance, accessible React date picker built on t
       }
 
       .nav-brand {
-        color: #71717a;
+        color: #7c7c84;
         font-size: 0.8125rem;
         font-weight: 400;
-        font-family: 'JetBrains Mono', monospace;
+        font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
         letter-spacing: 0;
         text-decoration: none;
         transition: color 0.25s cubic-bezier(0.22, 1, 0.36, 1);
@@ -120,7 +115,7 @@ const description = 'A high-performance, accessible React date picker built on t
         padding: 0.25rem 0.75rem !important;
         color: #7c7c84 !important;
         font-size: 0.75rem !important;
-        font-family: 'JetBrains Mono', monospace;
+        font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
       }
 
       .nav-pill:hover {
@@ -193,7 +188,7 @@ const description = 'A high-performance, accessible React date picker built on t
 
       .hero-tagline code {
         color: #a1a1aa;
-        font-family: 'JetBrains Mono', monospace;
+        font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
         font-size: 0.8125em;
         background: #111111;
         border: 1px solid #27272a;
@@ -461,10 +456,10 @@ const description = 'A high-performance, accessible React date picker built on t
 
     <!-- NAV -->
     <nav aria-label="Site navigation">
-      <a href="/" class="nav-brand">temporal-react-datepicker</a>
+      <a href={`${base}/`} class="nav-brand">temporal-react-datepicker</a>
       <ul class="nav-links">
-        <li><a href="/guides/getting-started/">Guides</a></li>
-        <li><a href="/reference/props/">Reference</a></li>
+        <li><a href={`${base}/guides/getting-started/`}>Guides</a></li>
+        <li><a href={`${base}/reference/props/`}>Reference</a></li>
         <li>
           <a
             href="https://github.com/PabloViniegra/temporal-react-datepicker-docs"
@@ -486,8 +481,11 @@ const description = 'A high-performance, accessible React date picker built on t
       </ul>
     </nav>
 
+    <!-- MAIN CONTENT -->
+    <main id="main-content">
+
     <!-- HERO -->
-    <section class="hero" aria-label="Overview" id="main-content">
+    <section class="hero" aria-label="Overview">
       <div class="hero-left">
         <div class="hero-badge">
           <span class="hero-badge-dot" aria-hidden="true"></span>
@@ -502,7 +500,7 @@ const description = 'A high-performance, accessible React date picker built on t
         </p>
 
         <div class="hero-cta">
-          <a href="/guides/getting-started/" class="btn-primary">Get Started →</a>
+          <a href={`${base}/guides/getting-started/`} class="btn-primary">Get Started →</a>
 
           <InstallWidget client:load />
         </div>
@@ -535,6 +533,7 @@ const description = 'A high-performance, accessible React date picker built on t
       </div>
     </section>
 
+    </main>
 
   </body>
 </html>

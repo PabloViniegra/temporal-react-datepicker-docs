@@ -1,3 +1,5 @@
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/jetbrains-mono";
 @import "tailwindcss";
 
 /* Match Starlight's [data-theme="dark"] for Tailwind dark: variants */
