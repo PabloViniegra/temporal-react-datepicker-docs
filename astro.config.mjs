@@ -8,6 +8,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://PabloViniegra.github.io/temporal-react-datepicker-docs',
+  base: '/temporal-react-datepicker-docs',
   integrations: [starlight({
       title: 'temporal-react-datepicker',
       social: [
