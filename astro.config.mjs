@@ -12,6 +12,7 @@ export default defineConfig({
   base: '/temporal-react-datepicker-docs',
   integrations: [starlight({
       title: 'temporal-react-datepicker',
+      favicon: '/favicon.svg',
       social: [
           {
               icon: 'github',

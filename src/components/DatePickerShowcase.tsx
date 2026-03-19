@@ -30,43 +30,22 @@ export function DatePickerShowcase() {
 
   return (
     <div>
-      {/* Tab row */}
-      <div
-        style={{
-          display: 'flex',
-          gap: '4px',
-          marginBottom: '10px',
-        }}
-      >
+      <div role="tablist" aria-label="Date picker mode" className="flex gap-1 mb-2.5">
         {TABS.map((tab) => {
           const isActive = mode === tab.value;
           return (
             <button
               key={tab.value}
+              role="tab"
+              aria-selected={isActive}
               onClick={() => handleModeChange(tab.value)}
-              style={{
-                background: isActive ? '#18181b' : 'transparent',
-                color: isActive ? '#fafafa' : '#71717a',
-                border: '1px solid',
-                borderColor: isActive ? '#27272a' : 'transparent',
-                borderRadius: '6px',
-                padding: '4px 12px',
-                fontSize: '0.6875rem',
-                fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
-                fontWeight: isActive ? 600 : 400,
-                cursor: 'pointer',
-                transition: 'background 0.15s, color 0.15s, border-color 0.15s',
-              }}
-              onMouseEnter={(e) => {
-                if (!isActive) {
-                  (e.currentTarget as HTMLButtonElement).style.color = '#71717a';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (!isActive) {
-                  (e.currentTarget as HTMLButtonElement).style.color = '#71717a';
-                }
-              }}
+              className={[
+                'border rounded-[6px] px-3 py-1 text-[0.6875rem] font-mono',
+                'cursor-pointer transition-colors duration-150',
+                isActive
+                  ? 'bg-[#18181b] text-[#fafafa] border-[#27272a] font-semibold'
+                  : 'bg-transparent text-[#71717a] border-transparent hover:text-[#a1a1aa]',
+              ].join(' ')}
             >
               {tab.label}
             </button>
@@ -74,7 +53,6 @@ export function DatePickerShowcase() {
         })}
       </div>
 
-      {/* Datepicker */}
       {mode === MODE.SINGLE ? (
         <TemporalDatePicker
           mode="single"

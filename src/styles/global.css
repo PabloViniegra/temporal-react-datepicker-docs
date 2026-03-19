@@ -2,5 +2,10 @@
 @import "@fontsource-variable/jetbrains-mono";
 @import "tailwindcss";
 
+@theme {
+  --font-sans: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
+}
+
 /* Match Starlight's [data-theme="dark"] for Tailwind dark: variants */
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));

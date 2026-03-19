@@ -106,23 +106,26 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         transform: translateY(-1px);
       }
 
-      .nav-pill {
+      .nav-links a.nav-pill {
         display: inline-flex;
         align-items: center;
         gap: 0.35rem;
-        border: 1px solid #27272a !important;
+        border: 1px solid #27272a;
         border-radius: 5px;
-        padding: 0.25rem 0.75rem !important;
-        color: #7c7c84 !important;
-        font-size: 0.75rem !important;
+        padding: 0.25rem 0.75rem;
+        color: #7c7c84;
+        font-size: 0.75rem;
         font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
+        transform: none;
       }
 
-      .nav-pill:hover {
-        border-color: #3f3f46 !important;
+      .nav-links a.nav-pill:hover {
+        border-color: #3f3f46;
+        color: #7c7c84;
+        transform: none;
       }
 
-      .nav-pill svg {
+      .nav-links a.nav-pill svg {
         flex-shrink: 0;
         fill: currentColor;
       }
@@ -241,13 +244,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         letter-spacing: 1.5px;
         text-transform: uppercase;
         color: #71717a;
+        font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
         margin-bottom: 0.75rem;
       }
 
       .calendar-preview {
         background: #111111;
         border: 1px solid #1e1e1e;
-        border-radius: 10px;
+        border-radius: 6px;
         padding: 1.25rem;
         user-select: none;
       }
