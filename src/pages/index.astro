@@ -238,15 +238,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         width: 300px;
       }
 
-      .hero-right-label {
-        font-size: 0.625rem;
-        font-weight: 500;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        color: #71717a;
-        font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
-        margin-bottom: 0.75rem;
-      }
 
       .calendar-preview {
         background: #111111;
@@ -346,8 +337,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         border-right: none;
       }
 
+      /* First feature (Temporal API) — primary differentiator */
+      .feature:first-child {
+        padding-right: 2rem;
+      }
+
+      .feature:first-child .feature-label {
+        color: #a1a1aa;
+      }
+
+      .feature:first-child .feature-text {
+        color: #71717a;
+      }
+
       .feature-label {
-        color: #7c7c84;
+        color: #3f3f46;
         font-size: 0.625rem;
         text-transform: uppercase;
         letter-spacing: 1.5px;
@@ -356,7 +360,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       }
 
       .feature-text {
-        color: #7c7c84;
+        color: #52525b;
         font-size: 0.75rem;
         line-height: 1.5;
       }
@@ -392,6 +396,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
       /* ── FEATURE STRIP ENTRANCE ── */
       .feature { animation: fadeSlideUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
       .feature:nth-child(1) { animation-delay: 0.44s; }
       .feature:nth-child(2) { animation-delay: 0.50s; }
       .feature:nth-child(3) { animation-delay: 0.56s; }
@@ -525,7 +530,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
       <!-- Interactive datepicker showcase -->
       <div class="hero-right">
-        <p class="hero-right-label" aria-hidden="true">Live preview</p>
         <DatePickerShowcase client:only="react" />
       </div>
     </section>

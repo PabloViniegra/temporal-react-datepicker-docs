@@ -13,6 +13,14 @@ export default defineConfig({
   integrations: [starlight({
       title: 'temporal-react-datepicker',
       favicon: '/favicon.svg',
+      head: [
+          {
+              // Force dark theme as default on first visit (before Starlight's ThemeProvider runs)
+              tag: 'script',
+              attrs: { 'is:inline': true },
+              content: `(function(){if(!localStorage.getItem('starlight-theme')){localStorage.setItem('starlight-theme','dark');document.documentElement.dataset.theme='dark';}})();`,
+          },
+      ],
       social: [
           {
               icon: 'github',
