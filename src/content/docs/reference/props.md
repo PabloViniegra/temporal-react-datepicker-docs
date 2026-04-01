@@ -1,7 +1,11 @@
 ---
 title: Props
-description: Complete API reference for all TemporalDatePicker props.
+description: Complete API reference for TemporalDatePicker and DatePickerInput props.
 ---
+
+The library exports two components: `TemporalDatePicker` (standalone calendar) and `DatePickerInput` (segmented input field with popover). Both share the same core props.
+
+## TemporalDatePicker
 
 `TemporalDatePicker` uses a discriminated union — the available props depend on `mode` and `clearable`.
 
@@ -37,3 +41,17 @@ When `clearable={true}`, `onChange` is widened to `(date: Temporal.PlainDate | u
 | `onChange` | `(range: DateRange) => void` | Called on each click. Fires with `end: null` after the first click, and with both dates set after the second. |
 
 When `clearable={true}`, `onChange` is widened to `(range: DateRange | undefined) => void`.
+
+## DatePickerInput
+
+`DatePickerInput` accepts all `TemporalDatePicker` shared props plus the following:
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `icon` | `ReactNode` | `<CalendarIcon />` | Replace the default calendar icon with any element. |
+| `iconPosition` | `'left' \| 'right'` | `'right'` | Position the icon before or after the segments. |
+| `placeholder` | `string` | locale-derived (e.g. `dd/mm/aaaa`) | Placeholder hint shown when no value is set. |
+| `disabled` | `boolean` | `false` | Disables all interaction. |
+| `className` | `string` | `''` | Additional CSS class on the root element. |
+
+See the [DatePickerInput guide](/guides/datepicker-input/) for usage examples.

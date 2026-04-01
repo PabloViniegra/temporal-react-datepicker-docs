@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Temporal } from '@js-temporal/polyfill';
-import { TemporalDatePicker } from 'temporal-react-datepicker';
+import { DatePickerInput } from 'temporal-react-datepicker';
 import type { DateRange } from 'temporal-react-datepicker';
 import '/node_modules/temporal-react-datepicker/dist/index.css';
 import '../../styles/datepicker-theme.css';
@@ -94,8 +94,8 @@ export function HotelForm() {
   return (
     <div className="pg-hotel">
       <p className="pg-hotel__desc">
-        Real-world example of <code>mode="range"</code> with <code>clearable</code> and{' '}
-        <code>isDateDisabled</code> (blocks past dates) inside a form.
+        Real-world example of <code>DatePickerInput</code> with <code>mode="range"</code>,{' '}
+        <code>clearable</code>, and <code>isDateDisabled</code> (blocks past dates) inside a form.
       </p>
 
       <form onSubmit={handleSubmit} className="pg-hotel__form" noValidate>
@@ -152,12 +152,13 @@ export function HotelForm() {
 
         <div className="pg-field">
           <div className="pg-field__label">Check-in / Check-out</div>
-          <TemporalDatePicker
+          <DatePickerInput
             mode="range"
             clearable
             value={form.dates}
             onChange={(dates) => update('dates', dates)}
             isDateDisabled={isPastDate}
+            className="pg-datepicker-input"
           />
           {errors.dates && <span className="pg-field__error">{errors.dates}</span>}
         </div>

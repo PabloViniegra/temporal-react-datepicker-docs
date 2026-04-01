@@ -39,6 +39,7 @@ export default defineConfig({
               label: 'Guides',
               items: [
                   { label: 'Getting Started', slug: 'guides/getting-started' },
+                  { label: 'DatePickerInput', slug: 'guides/datepicker-input' },
                   { label: 'Date Range', slug: 'guides/date-range' },
                   { label: 'Disabled Dates', slug: 'guides/disabled-dates' },
                   { label: 'Custom Day Content', slug: 'guides/custom-day-content' },

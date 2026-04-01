@@ -97,3 +97,55 @@
   --tdp-disabled-text: #d4d4d8;
   --tdp-shadow:        0 4px 24px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.06);
 }
+
+/* ─── DatePickerInput — zinc theme ───────────────────────────────────────── */
+
+/* Default (dark) */
+.pg-datepicker-input {
+  --tdp-bg:           #09090b;
+  --tdp-border:       #27272a;
+  --tdp-text:         #e4e4e7;
+  --tdp-text-muted:   #3f3f46;
+  --tdp-accent:       #fafafa;
+  --tdp-accent-fg:    #09090b;
+  --tdp-input-bg:     #09090b;
+  --tdp-input-border: #27272a;
+}
+
+/* Light — system preference */
+@media (prefers-color-scheme: light) {
+  .pg-datepicker-input {
+    --tdp-bg:           #ffffff;
+    --tdp-border:       #e4e4e7;
+    --tdp-text:         #18181b;
+    --tdp-text-muted:   #a1a1aa;
+    --tdp-accent:       #09090b;
+    --tdp-accent-fg:    #ffffff;
+    --tdp-input-bg:     #ffffff;
+    --tdp-input-border: #e4e4e7;
+  }
+}
+
+/* Dark — Starlight override */
+[data-theme='dark'] .pg-datepicker-input {
+  --tdp-bg:           #09090b;
+  --tdp-border:       #27272a;
+  --tdp-text:         #e4e4e7;
+  --tdp-text-muted:   #3f3f46;
+  --tdp-accent:       #fafafa;
+  --tdp-accent-fg:    #09090b;
+  --tdp-input-bg:     #09090b;
+  --tdp-input-border: #27272a;
+}
+
+/* Light — Starlight override */
+[data-theme='light'] .pg-datepicker-input {
+  --tdp-bg:           #ffffff;
+  --tdp-border:       #e4e4e7;
+  --tdp-text:         #18181b;
+  --tdp-text-muted:   #a1a1aa;
+  --tdp-accent:       #09090b;
+  --tdp-accent-fg:    #ffffff;
+  --tdp-input-bg:     #ffffff;
+  --tdp-input-border: #e4e4e7;
+}

@@ -1143,6 +1143,52 @@ main:has(.pg-root) > * {
   outline-offset: 2px;
 }
 
+/* ── DatePickerInput inside hotel form ───────────────── */
+.pg-datepicker-input {
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.9375rem;
+}
+
+.pg-datepicker-input .tdp-input__wrapper {
+  background: #09090b;
+  border-color: #27272a;
+  border-radius: 6px;
+}
+
+.pg-datepicker-input .tdp-input__wrapper:focus-within {
+  border-color: #fafafa;
+  box-shadow: 0 0 0 1px #fafafa;
+}
+
+/* Segment text — light on dark bg */
+.pg-datepicker-input .tdp-input__segment {
+  color: #e4e4e7;
+}
+
+/* Focused segment — dark text on accent (#fafafa) bg */
+.pg-datepicker-input .tdp-input__segment:focus {
+  color: #09090b;
+}
+
+[data-theme='light'] .pg-datepicker-input .tdp-input__wrapper {
+  background: #ffffff;
+  border-color: #e4e4e7;
+}
+
+[data-theme='light'] .pg-datepicker-input .tdp-input__wrapper:focus-within {
+  border-color: #09090b;
+  box-shadow: 0 0 0 1px #09090b;
+}
+
+[data-theme='light'] .pg-datepicker-input .tdp-input__segment {
+  color: #18181b;
+}
+
+[data-theme='light'] .pg-datepicker-input .tdp-input__segment:focus {
+  color: #ffffff;
+}
+
 /* ── Light theme ──────────────────────────────────────── */
 [data-theme='light'] .pg-tabs {
   border-bottom-color: #e4e4e7;

@@ -24,8 +24,25 @@ export const codeClearable = `<TemporalDatePicker
   onChange={setDate}
 />`;
 
+export const codeInputBasic = `import { useState } from 'react'
+import { Temporal } from '@js-temporal/polyfill'
+import { DatePickerInput } from 'temporal-react-datepicker'
+
+function App() {
+  const [date, setDate] = useState<Temporal.PlainDate | undefined>(undefined)
+
+  return <DatePickerInput clearable value={date} onChange={setDate} />
+}`;
+
 `temporal-react-datepicker` is a React date picker built on the [Temporal API](https://tc39.es/proposal-temporal/).
 Pick a date, get back an immutable `Temporal.PlainDate` — no `Date` objects, no timezone surprises.
+
+The library exports two components:
+
+| Component | Use when… |
+|---|---|
+| `TemporalDatePicker` | You need a standalone calendar (embedded in a page, sidebar, or popover you control). |
+| `DatePickerInput` | You need a form field — a segmented input that opens a calendar popover. |
 
 <div class="gs-requirements not-content">
   <span class="gs-req-label">Requires</span>
@@ -52,6 +69,14 @@ When cleared, `onChange` receives `undefined`.
 
 <DocCodeBlock lang="tsx" code={codeClearable} />
 
+## DatePickerInput
+
+For a form-field experience — a locale-aware segmented input that opens a popover calendar:
+
+<DocCodeBlock lang="tsx" code={codeInputBasic} />
+
+The segment order adapts to the user's locale automatically (`es-ES` → `dd/mm/aaaa`, `en-US` → `mm/dd/yyyy`). See the [DatePickerInput guide](/guides/datepicker-input/) for all options.
+
 ## Next steps
 
 <div class="gs-next-steps not-content">
@@ -73,6 +98,11 @@ When cleared, `onChange` receives `undefined`.
   <a href="/guides/theming/" class="gs-next-card">
     <span class="gs-next-title">Theming</span>
     <span class="gs-next-desc">17 CSS custom properties for full visual control.</span>
+    <span class="gs-next-arrow" aria-hidden="true">→</span>
+  </a>
+  <a href="/guides/datepicker-input/" class="gs-next-card">
+    <span class="gs-next-title">DatePickerInput</span>
+    <span class="gs-next-desc">Segmented input field with locale-aware format and popover calendar.</span>
     <span class="gs-next-arrow" aria-hidden="true">→</span>
   </a>
 </div>

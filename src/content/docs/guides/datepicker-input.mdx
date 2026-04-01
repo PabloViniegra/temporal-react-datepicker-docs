@@ -1,0 +1,120 @@
+---
+title: DatePickerInput
+description: A locale-aware segmented input field with a popover calendar.
+---
+
+import DocCodeBlock from '@/components/code-block/DocCodeBlock.astro';
+
+export const codeBasic = `import { useState } from 'react'
+import { Temporal } from '@js-temporal/polyfill'
+import { DatePickerInput } from 'temporal-react-datepicker'
+
+function App() {
+  const [date, setDate] = useState<Temporal.PlainDate | undefined>(undefined)
+
+  return <DatePickerInput value={date} onChange={setDate} />
+}`;
+
+export const codeClearable = `<DatePickerInput clearable value={date} onChange={setDate} />`;
+
+export const codeRange = `import type { DateRange } from 'temporal-react-datepicker'
+
+const [range, setRange] = useState<DateRange | undefined>(undefined)
+
+<DatePickerInput
+  mode="range"
+  clearable
+  value={range}
+  onChange={setRange}
+/>`;
+
+export const codeLocale = `// Explicit locale — segments reorder automatically
+<DatePickerInput locale="es-ES" onChange={setDate} />
+
+// Follows browser locale (default)
+<DatePickerInput onChange={setDate} />`;
+
+export const codeIcon = `import { DatePickerInput, CalendarIcon } from 'temporal-react-datepicker'
+
+// Replace with a custom SVG
+<DatePickerInput
+  icon={<MyCalendarIcon />}
+  onChange={setDate}
+/>
+
+// Icon on the left
+<DatePickerInput
+  iconPosition="left"
+  onChange={setDate}
+/>
+
+// No icon
+<DatePickerInput
+  icon={<span style={{ display: 'none' }} />}
+  onChange={setDate}
+/>`;
+
+export const codeDisabled = `<DatePickerInput disabled value={date} onChange={setDate} />`;
+
+`DatePickerInput` is a form-field component — a locale-aware segmented input (day / month / year) that opens a calendar popover. It accepts the same `mode`, `clearable`, `isDateDisabled`, `locale`, and `labels` props as `TemporalDatePicker`, plus its own input-specific props.
+
+<DocCodeBlock lang="tsx" code={codeBasic} />
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `icon` | `ReactNode` | `<CalendarIcon />` | Replace the default calendar icon. |
+| `iconPosition` | `'left' \| 'right'` | `'right'` | Position the icon before or after the segments. |
+| `placeholder` | `string` | locale-derived (e.g. `dd/mm/aaaa`) | Placeholder shown when no value is set. |
+| `disabled` | `boolean` | `false` | Disables all interaction. |
+| `className` | `string` | `''` | Additional CSS class on the root element. |
+
+All `TemporalDatePicker` shared props (`mode`, `clearable`, `value`, `onChange`, `isDateDisabled`, `locale`, `labels`) are also accepted. See [Props reference](/reference/props/).
+
+## Locale-aware segment order
+
+The segment order and separator are derived from `Intl.DateTimeFormat` — no hardcoded format tables:
+
+| Locale | Format |
+|---|---|
+| `es-ES` | `dd / mm / aaaa` |
+| `en-US` | `mm / dd / yyyy` |
+| `en-GB` | `dd / mm / yyyy` |
+| `ja-JP` | `yyyy / mm / dd` |
+| `de-DE` | `dd / mm / jjjj` |
+
+<DocCodeBlock lang="tsx" code={codeLocale} />
+
+## Clearable
+
+Pass `clearable` to show a **×** button. When cleared, `onChange` receives `undefined`.
+
+<DocCodeBlock lang="tsx" code={codeClearable} />
+
+## Range mode
+
+In range mode, two segment groups appear side-by-side separated by `→`. Both groups share a single popover that closes automatically once start and end are selected.
+
+<DocCodeBlock lang="tsx" code={codeRange} />
+
+## Custom icon
+
+`CalendarIcon` is exported separately if you want to compose it. Pass any `ReactNode` to `icon`:
+
+<DocCodeBlock lang="tsx" code={codeIcon} />
+
+## Disabled
+
+<DocCodeBlock lang="tsx" code={codeDisabled} />
+
+## Keyboard interaction
+
+| Key | Action |
+|---|---|
+| `↑` / `↓` | Increment / decrement the active segment. Day and month wrap around. |
+| `Tab` / `Shift+Tab` | Move to the next / previous segment. |
+| `0–9` | Type a value directly. Auto-advances when unambiguous (e.g. `5` on day → commits `05`, moves to month). |
+| `Backspace` | Clear the active segment. |
+| `Enter` / `Space` | Open the calendar popover. |
+| `Escape` | Close the calendar popover. |
